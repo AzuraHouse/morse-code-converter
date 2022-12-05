@@ -1,3 +1,5 @@
+import encode
+
 Morse_Code_Dict = {'A': '.-', 'B': '-...',
                    'C': '-.-.', 'D': '-..', 'E': '.',
                    'F': '..-.', 'G': '--.', 'H': '....',
@@ -14,4 +16,30 @@ Morse_Code_Dict = {'A': '.-', 'B': '-...',
                    '?': '..--..', '/': '-..-.', '-': '-....-',
                    '(': '-.--.', ')': '-.--.-'}
 
-print(Morse_Code_Dict['A'])
+user_input = input("Enter text to convert into Morse Code ").upper()
+
+encoded_string = encode.string(message=user_input, dictionary=Morse_Code_Dict)
+
+
+# print(encoded_string)
+
+
+def decode(message, dictionary):
+    cipher = []
+    text = []
+    string = " "
+    for letter in message:
+        cipher.append(letter)
+        for key in dictionary:
+            if letter == dictionary[key]:
+                cipher.clear()
+                text.append(key)
+
+    for value in text:
+        value.lower()
+        string += value
+
+    return string.capitalize()
+
+
+print(decode(encoded_string, Morse_Code_Dict))
